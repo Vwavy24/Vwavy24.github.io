@@ -1,0 +1,68 @@
+---
+title: "Plotly"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+We're going to look at the NOAA data. This data is from the National Oceanic and Atmospheric Association (NOAA) for Environmental Information(NCEI) and it provides weather data including data fro, the Global Historical Climatology Network)-Dailt database with summary statistics from weather stations worldwide.
+
+```{r}
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+```
+
+```{r}
+data("ny_noaa")
+
+ny_noaa = 
+  ny_noaa %>%
+  separate(date, into = c("Year", "Month", "Day"), convert = TRUE) %>%
+  mutate(
+    Year = as.character(Year),
+    Month = as.character(Month),
+    tmax = as.numeric(tmax),
+    tmin = as.numeric(tmin),
+    tmax = tmax / 10, 
+    tmin = tmin / 10) %>%
+  select(Year, Month, Day, id, tmax,tmin)%>%
+  filter(
+    Year == 2010,
+    Day %in% 1:7) %>%
+  drop_na(tmax)%>%
+  drop_na(tmin)
+
+head(ny_noaa)
+
+```
+
+#Plotly plots
+
+##Scatterplot
+```{r}
+ny_noaa %>%
+  plot_ly(
+    x = ~tmax, y = ~tmin, color = ~Day,text = ~id,
+    alpha = .5, type = "scatter", mode  = "markers")
+
+```
+
+
+##Boxplot
+```{r}
+ny_noaa%>%
+  mutate(Month = fct_reorder(Month, tmax))%>%
+  plot_ly(
+    y = ~tmax, color = ~Month,
+    type = "box", colors = "viridis")
+```
+
+##Barplot
+```{r}
+ny_noaa %>%
+  count(Month) %>%
+  mutate(Month = fct_reorder(Month, n)) %>%
+  plot_ly(x = ~Month,y = ~n, color = ~Month, type = "bar", colors = "viridis")
+```
