@@ -1,23 +1,20 @@
 ---
-title: "Plotly"
+title: "Dashboard"
 output: 
-  html_document:
-    toc: true
-    toc_float: true
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    source: embed
 ---
 
-##Plotly Graphs
-
-We're going to look at the NOAA data. This data is from the National Oceanic and Atmospheric Association (NOAA) for Environmental Information(NCEI) and it provides weather data including data fro, the Global Historical Climatology Network)-Dailt database with summary statistics from weather stations worldwide.
-
-```{r}
+```{r setup, include=FALSE}
 library(tidyverse)
 library(p8105.datasets)
 library(plotly)
+
+library(flexdashboard)
 ```
 
-
-##Loading Data
 ```{r}
 data("ny_noaa")
 
@@ -37,24 +34,25 @@ ny_noaa =
     Day %in% 1:7) %>%
   drop_na(tmax)%>%
   drop_na(tmin)
-
-head(ny_noaa)
-
 ```
 
-#Plotly plots
+Column {data-width=650}
+-----------------------------------------------------------------------
 
-#Scatterplot
+### Chart A
+
 ```{r}
 ny_noaa %>%
   plot_ly(
     x = ~tmax, y = ~tmin, color = ~Day,text = ~id,
     alpha = .5, type = "scatter", mode  = "markers")
-
 ```
 
+Column {data-width=350}
+-----------------------------------------------------------------------
 
-##Boxplot
+### Chart B
+
 ```{r}
 ny_noaa%>%
   mutate(Month = fct_reorder(Month, tmax))%>%
@@ -63,10 +61,13 @@ ny_noaa%>%
     type = "box", colors = "viridis")
 ```
 
-##Barplot
+### Chart C
+
 ```{r}
 ny_noaa %>%
   count(Month) %>%
   mutate(Month = fct_reorder(Month, n)) %>%
   plot_ly(x = ~Month,y = ~n, color = ~Month, type = "bar", colors = "viridis")
+
 ```
+
