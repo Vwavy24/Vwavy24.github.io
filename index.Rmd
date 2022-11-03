@@ -8,11 +8,11 @@ output:
 
 #Hi! Welcome to my website where you will get to know more about me! 
 
-![](https://media.giphy.com/media/drXGoW1iudhKw/giphy.gif)
+![](https://media.giphy.com/media/YRWLoMugTT2zQbPnYd/giphy.gif)
 
 ## About me
 
-My name is Varvara Rousseau and I a first year M.S. candidate studying Epidemiology planing to graduate in 2024. I am a child of Haitian immigrants and is originally from Queens Village but I now reside on Long Island.  I am interested in concentrating on infectious disease or chronic epidemiology with the hope of working for the CDC or at a biotechnology company like pfizer. 
+My name is Varvara Rousseau and I am a first year M.S. candidate studying Epidemiology planing to graduate in 2024. I am a child of Haitian immigrants living on Long Island.  I am interested in concentrating on infectious disease or chronic epidemiology with the hope of working for the CDC or at a biotechnology company like pfizer.  After I graduate with my master's I do plan on pursuing a Phd.
 
 
 [My Academic and Professional Experience](about.html)

@@ -63,6 +63,10 @@ ny_noaa%>%
     type = "box", colors = "viridis")
 ```
 
+
+
+
+
 ##Barplot
 ```{r}
 ny_noaa %>%
