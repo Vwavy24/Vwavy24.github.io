@@ -52,6 +52,8 @@ ny_noaa %>%
     alpha = .5, type = "scatter", mode  = "markers")
 
 ```
+This scatterplot shows the the maximum and minimum temperatures (tenths of degrees C) of the first seven days of each month in the 2010.
+
 
 
 ##Boxplot
@@ -63,6 +65,7 @@ ny_noaa%>%
     type = "box", colors = "viridis")
 ```
 
+This boxplot shows the maximum temperatures of the first even days of each month. The y axis is the month and the y axis is the maximum temperatures.
 
 
 
@@ -74,3 +77,6 @@ ny_noaa %>%
   mutate(Month = fct_reorder(Month, n)) %>%
   plot_ly(x = ~Month,y = ~n, color = ~Month, type = "bar", colors = "viridis")
 ```
+
+This barplot shows the bar height and the number count of each month with month on the x axis and n being on the y axis. 
+
